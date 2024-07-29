@@ -1,0 +1,93 @@
+@import url("https://use.fontawesome.com/releases/v6.4.2/css/all.css");
+
+
+
+.input-container{
+    height: 50px;
+   position: relative;
+
+}
+input {
+    width: 60%;
+    height: 50px;
+    background-color: aquamarine;
+    font-size: 120%;
+    border-radius: 7px;
+    border: none;
+    position: fixed;
+    left:20%;
+    right: 20%;
+}
+
+#magnifying {
+    width: 20px;
+    height: 20px;
+
+    position: fixed;
+     left: 78%;;
+     top: 3%
+   
+}
+
+#magnifying:hover{
+    cursor: pointer;
+}
+
+
+.city {
+   
+    width: 100%;
+    margin-top: 100px;
+    display: inline-flex;
+
+    min-height: 350px;
+    justify-content: space-around;
+
+  
+}
+.characteristics-of-the-city {
+    text-align: center;
+    margin-left: 4%;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    gap: 1rem; 
+ 
+
+}
+.city div:nth-child(1) {
+    flex-basis: 25%;
+}
+.city div:nth-child(2) {
+    flex-basis: 25%;  
+}
+.city div:nth-child(3) {
+    flex-basis: 25%;
+}
+.city div:nth-child(4) {
+    margin-right: 4%;
+    flex-basis: 25%;
+}
+
+
+.weather-icon {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+}
+
+
+
+
+.name {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+ 
