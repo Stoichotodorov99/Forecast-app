@@ -5,10 +5,12 @@ const magnifying = document.getElementById('magnifying');
 let cityName = document.getElementsByClassName('name');
 const date = document.getElementsByClassName('date');
 let icon = document.getElementsByClassName('weather-icon');
-let temperatureNow = document.getElementById('temp-now');
+let temperatureNow = document.getElementsByClassName('temp-now');
 let temperatureFeel = document.getElementById("temp-feel");
-let weatherDescriptionElement = document.getElementById("weather-description");
+let weatherDescriptionElement = document.getElementsByClassName("weather-description");
 
+let humidityPercentElement = document.getElementsByClassName("humidity-percent");
+let windKmElement = document.getElementsByClassName("wind-km");
 const weekday = ["Неделя","Понеделник","Вторник","Сряда","Четвъртък","Петък","Събота"];
 
 function start() 
@@ -43,26 +45,52 @@ function start()
             
             array2.forEach(city => {
             icon[0].src = city.condition.icon
-            temperatureNow.innerHTML = `${city.temp_c}°C`;
+            temperatureNow[0].innerHTML = `${city.temp_c}°C`;
             temperatureFeel.innerHTML = `Усеща се като ${city.feelslike_c}°C`;
-            weatherDescriptionElement.innerHTML = city.condition.text;
-
-
+            weatherDescriptionElement[0].innerHTML = city.condition.text;
             })
                   
             array3.forEach(city => {
+                const dayOne = city.forecastday[0];
+                const dayTwo = city.forecastday[1];
+                const dayThree = city.forecastday[2];
                 
-                 const forecastDayOne = new Date(city.forecastday[0].date);
-                 const forecastDayTwo = new Date(city.forecastday[1].date);
-                 const forecastDayThree = new Date(city.forecastday[2].date);
+                 const forecastDayOne = new Date(dayOne.date);
+                 const forecastDayTwo = new Date(dayTwo.date);
+                 const forecastDayThree = new Date(dayThree.date);
 
             
                 cityName[1].innerHTML = dayByTheDay(forecastDayOne);
                 cityName[2].innerHTML = dayByTheDay(forecastDayTwo);
                 cityName[3].innerHTML = dayByTheDay(forecastDayThree);
 
-                date[1].innerHTML = city.forecastday[0].date.split('-').reverse().join('-');
-                date[2].innerHTML = city.forecastday[1].date.split('-').reverse().join('-');
+                date[1].innerHTML = dayOne.date.split('-').reverse().join('-');
+                date[2].innerHTML = dayTwo.date.split('-').reverse().join('-');
+                date[3].innerHTML = dayThree.date.split('-').reverse().join('-');
+
+
+                temperatureNow[1].innerHTML = `${dayOne.day.mintemp_c}°C / ${dayOne.day.maxtemp_c}°C `;
+                temperatureNow[2].innerHTML = `${dayTwo.day.mintemp_c}°C / ${dayTwo.day.maxtemp_c}°C `;
+                temperatureNow[3].innerHTML = `${dayThree.day.mintemp_c}°C / ${dayThree.day.maxtemp_c}°C `;
+
+                
+                weatherDescriptionElement[1].innerHTML = dayOne.day.condition.text;
+                weatherDescriptionElement[2].innerHTML = dayTwo.day.condition.text;
+                weatherDescriptionElement[3].innerHTML = dayThree.day.condition.text;
+
+                
+                icon[1].src = dayOne.day.condition.icon;
+                icon[2].src = dayTwo.day.condition.icon;
+                icon[3].src = dayThree.day.condition.icon;
+                
+                humidityPercentElement[0].innerHTML = `${dayOne.day.avghumidity}%`;
+                humidityPercentElement[1].innerHTML = `${dayTwo.day.avghumidity}%`;                
+                humidityPercentElement[2].innerHTML = `${dayThree.day.avghumidity}%`;
+
+
+                windKmElement[0].innerHTML = `${dayOne.day.maxwind_kph} км/ч`
+                windKmElement[1].innerHTML = `${dayTwo.day.maxwind_kph} км/ч`
+                windKmElement[2].innerHTML = `${dayThree.day.maxwind_kph} км/ч`
 
             })
 
